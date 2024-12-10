@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Organize Seu Dia</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
@@ -11,8 +12,8 @@
         <h1>Organize Seu Dia</h1>
         <form id="hours-form">
             <label for="total-hours">Quantas horas você quer organizar (máximo 24)?</label>
-            <input type="number" id="total-hours" name="total-hours" max="24" min="1" required>
-            <button type="submit">Definir Horas</button>
+            <p><input type="number" id="total-hours" name="total-hours" max="24" min="1" required>
+            <button type="submit">Definir Horas</button></p>
         </form>
         <div id="circle-container">
             <canvas id="day-circle" width="300" height="300"></canvas>
@@ -25,6 +26,6 @@
             <button type="submit">Adicionar Tarefa</button>
         </form>
     </div>
-    <script src="/static/js/script.js"></script>
+    <script src="/static/js/script.js"></script>   
 </body>
 </html>

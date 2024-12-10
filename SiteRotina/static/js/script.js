@@ -70,3 +70,46 @@ taskForm.addEventListener("submit", (e) => {
 
 // Desenha o círculo inicial ao carregar a página
 drawCircle();
+
+const width = 400;
+const height = 400;
+const radius = 150;
+
+// Cria o SVG
+const svg = d3.select("#chart")
+    .append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+// Grupo centralizado
+const g = svg.append("g")
+    .attr("transform", `translate(${width / 2}, ${height / 2})`);
+
+// Cria um arco inicial
+const arc = d3.arc()
+    .innerRadius(radius - 40)
+    .outerRadius(radius)
+    .startAngle(0)
+    .endAngle(Math.PI / 4); // 45 graus como exemplo
+
+// Adiciona o arco ao SVG
+const path = g.append("path")
+    .attr("d", arc)
+    .attr("fill", "orange");
+
+// Adiciona puxadores
+const handle = g.append("circle")
+    .attr("cx", radius * Math.cos(Math.PI / 4)) // Coordenada X
+    .attr("cy", -radius * Math.sin(Math.PI / 4)) // Coordenada Y
+    .attr("r", 8)
+    .attr("fill", "red")
+    .call(d3.drag()
+        .on("drag", function (event) {
+            const angle = Math.atan2(event.y, event.x);
+            arc.endAngle(angle); // Atualiza o ângulo final do arco
+            path.attr("d", arc); // Redesenha o arco
+            d3.select(this)
+                .attr("cx", radius * Math.cos(angle))
+                .attr("cy", -radius * Math.sin(angle));
+        })
+    );
