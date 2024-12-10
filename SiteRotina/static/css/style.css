@@ -1,0 +1,23 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f7f7f7;
+}
+
+.container {
+    text-align: center;
+}
+
+#circle-container {
+    margin: 20px auto;
+    position: relative;
+}
+
+canvas {
+    border: 5px solid #ddd;
+    border-radius: 50%;
+}
